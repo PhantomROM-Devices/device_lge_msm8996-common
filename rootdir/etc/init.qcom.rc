@@ -35,6 +35,11 @@ on charger
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     wait /dev/block/bootdevice
 
+service charger /charger
+    class charger
+    group system graphics
+    seclabel u:r:healthd:s0
+
 on init
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
