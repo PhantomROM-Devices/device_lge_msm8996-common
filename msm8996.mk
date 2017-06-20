@@ -155,8 +155,8 @@ PRODUCT_PACKAGES += \
     fs_config_files
 
 # Gesture handler
-#PRODUCT_PACKAGES += \
-#    GestureHandler
+PRODUCT_PACKAGES += \
+    GestureHandler
 
 # GPS
 PRODUCT_PACKAGES += \
