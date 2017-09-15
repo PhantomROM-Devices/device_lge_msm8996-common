@@ -27,8 +27,6 @@ PRODUCT_AAPT_PREF_CONFIG := 560dpi
 
 TARGET_RECOVERY_DENSITY := xxhdpi
 
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-4096-hwui-memory.mk)
-
 # Add WiFi Config files
 # TEMP: These are broken right now
 #$(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
@@ -87,7 +85,8 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libvolumelistener \
-    tinymix
+    tinymix \
+    libqcomvoiceprocessingdescriptors
 
 # Audio HAL
 PRODUCT_PACKAGES += \
@@ -166,6 +165,11 @@ PRODUCT_PACKAGES += \
 # Doze mode
 #PRODUCT_PACKAGES += \
 #    LGDoze
+
+# IR
+PRODUCT_PACKAGES += \
+    android.hardware.ir@1.0-impl \
+    consumerir.msm8996
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -315,6 +319,10 @@ PRODUCT_PACKAGES += \
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
+
+# HIDL manifest
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
 
 # Sensors
 PRODUCT_PACKAGES += \
